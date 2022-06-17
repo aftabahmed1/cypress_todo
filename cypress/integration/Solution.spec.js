@@ -56,7 +56,6 @@ describe('E2E Test Cypress', function () {
     })
     it('Remove items', () => {
         cy.get('ul').children().each(($el, index) => {
-            //console.log("Index", $el, index)
             cy.get('[href="/todo/delete/0"]').click()
         })
        
