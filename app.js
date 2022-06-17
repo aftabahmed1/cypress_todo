@@ -17,19 +17,30 @@ app.use(methodOverride(function (req, res) {
 }));
 
 let todolist = [];
+let alert = false
 
 app.get('/todo', function (req, res) {
   res.render('todo.ejs', {
     todolist,
-    clickHandler: "func1();"
+    clickHandler: "func1();",
+    alert
   });
 })
 
   .post('/todo/add/', function (req, res) {
     if (req.body.newtodo != '') {
-      todolist.push(req.body.newtodo);
+      let test = req.body.newtodo
+      var matchTest = test.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+      if(matchTest && matchTest.length > 0){
+        console.log("Attack")
+        alert = true
+        res.redirect('/todo');
+      } else {
+        alert = false
+        todolist.push(req.body.newtodo);
+        res.redirect('/todo');
+      }
     }
-    res.redirect('/todo');
   })
 
   .get('/todo/delete/:id', function (req, res) {

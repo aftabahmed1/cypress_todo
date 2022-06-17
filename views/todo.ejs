@@ -15,6 +15,9 @@
 
     <body>
         <h1>DataGuard TODO List Challenge</h1>
+        <% if(alert){%>
+         <script>alert('Attack');</script> 
+        <%}%>
         <ul>
             <% todolist.forEach(function(todo, index) { %>
             <li>
