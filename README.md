@@ -61,4 +61,8 @@ Users should be able to:
    them.
 
 ### Summarise your solution here
+I have covered cases according to high level specifications, also have put an alert pop up to show that it's an attack that is vulnerability of XSS on this app and tested that as a case while automating test cases.
 
+In order to execute this test in headless mode : **npm run headless** (If error comes up please execute "**npm i**")
+
+If without headless mode that is to see it in action with cypress UI you can run and click on the case after running this command : **npm run open**
